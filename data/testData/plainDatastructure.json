@@ -1,0 +1,12 @@
+{
+    "lookup":{},
+    "utgifter":{
+        "mat":{},
+        "alkohol":{},
+        "aktiviteter":{},
+        "transport":{},
+        "innredning":{},
+        "drikke":{},
+        "annet":{}
+    }
+}
