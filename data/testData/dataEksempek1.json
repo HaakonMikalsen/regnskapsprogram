@@ -1,0 +1,30 @@
+{
+    "lookup": {"iste":["utgifter","drikke","iste"]},
+    "utgifter": {
+        "mat": {},
+        "alkohol": {},
+        "aktiviteter": {},
+        "transport": {},
+        "innredning": {},
+        "drikke": {
+            "iste": [
+                {
+                    "pris": 22,
+                    "dato": "2024-07-22",
+                    "sted": "REMA"
+                },
+                {
+                    "pris": 22,
+                    "dato": "2024-07-29",
+                    "sted": "Coop_ekstra"
+                }
+            ]
+        },
+        "annet": {"leie":[{"pris":5889,"dato":"2024-08-01","sted":"sit"}]}
+    },
+    "steder": [
+        "REMA",
+        "Coop_ekstra",
+        "sit"
+    ]
+}
