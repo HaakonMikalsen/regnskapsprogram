@@ -1,0 +1,15 @@
+{
+    "navn":"iste",
+    "data":[
+        {
+            "pris": 22,
+            "dato": "2024-07-22",
+            "sted": "REMA"
+        },
+        {
+            "pris": 22,
+            "dato": "2024-07-29",
+            "sted": "Coop_ekstra"
+        }
+    ]
+}

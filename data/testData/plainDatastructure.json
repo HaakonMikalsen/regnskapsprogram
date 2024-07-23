@@ -5,8 +5,8 @@
         "alkohol":{},
         "aktiviteter":{},
         "transport":{},
-        "innredning":{},
         "drikke":{},
         "annet":{}
-    }
+    },
+    "steder": []
 }

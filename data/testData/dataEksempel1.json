@@ -1,5 +1,16 @@
 {
-    "lookup": {"iste":["utgifter","drikke","iste"]},
+    "lookup": {
+        "iste": [
+            "utgifter",
+            "drikke",
+            "iste"
+        ],
+        "leie": [
+            "utgifter",
+            "annet",
+            "leie"
+        ]
+    },
     "utgifter": {
         "mat": {},
         "alkohol": {},
@@ -20,7 +31,15 @@
                 }
             ]
         },
-        "annet": {"leie":[{"pris":5889,"dato":"2024-08-01","sted":"sit"}]}
+        "annet": {
+            "leie": [
+                {
+                    "pris": 5889,
+                    "dato": "2024-08-01",
+                    "sted": "sit"
+                }
+            ]
+        }
     },
     "steder": [
         "REMA",
