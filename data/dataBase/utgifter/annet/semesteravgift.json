@@ -1,0 +1,10 @@
+{
+    "navn": "semesteravgift",
+    "data": [
+        {
+            "pris": 700,
+            "dato": "2024-09-15",
+            "sted": "NTNU"
+        }
+    ]
+}

@@ -2,6 +2,7 @@
     "navn": "lookup",
     "data": {
         "iste": "/utgifter/drikke/iste.json",
-        "leie": "/utgifter/annet/leie.json"
+        "leie": "/utgifter/annet/leie.json",
+        "semesteravgift": "/utgifter/annet//semesteravgift.json"
     }
 }
