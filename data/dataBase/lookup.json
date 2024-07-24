@@ -1,9 +1,7 @@
 {
-    "navn":"lookup",
-    "data": [
-        {
-            "iste": "/utgifter/drikke/iste.json",
-            "leie":"/utgifter/annet/leie.json"
-        }
-    ]
+    "navn": "lookup",
+    "data": {
+        "iste": "/utgifter/drikke/iste.json",
+        "leie": "/utgifter/annet/leie.json"
+    }
 }
