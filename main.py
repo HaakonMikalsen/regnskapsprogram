@@ -1,11 +1,18 @@
 import os
 import json
+import datetime
 
 current_file_directory = os.path.dirname(os.path.abspath(__file__))
 databasePath = current_file_directory + "/data/dataBase"
 lookUpTablePath = databasePath + "/lookup.json"
 placePath = databasePath + "/steder.json"
 
+
+def space(spacing=2):
+    print("\n"*spacing)
+    print("-"*20)
+    print("\n"*spacing)
+    
 
 def loadData(path):
     data = open(path, "r")
@@ -60,10 +67,58 @@ def addItem(folderPath, name, pris, dato, sted):
 
 lookUpTableData = loadData(lookUpTablePath)
 
-print(lookUpTableData)
-
-print(loadData(databasePath + lookUpTableData["iste"]))
-# addPrice(databasePath + lookUpTableData["iste"],23,"24-07-2024","REMA")
-# addItem(databasePath + "/utgifter/annet/", "semesteravgift", 700, "2024-09-15", "NTNU")
+# space()
+# print(lookUpTableData)
 
 # print(loadData(databasePath + lookUpTableData["iste"]))
+# # addPrice(databasePath + lookUpTableData["iste"],23,"24-07-2024","REMA")
+# # addItem(databasePath + "/utgifter/annet/", "semesteravgift", 700, "2024-09-15", "NTNU")
+
+# print(loadData(databasePath + lookUpTableData["iste"]))
+
+print("Velkommen til regnskapsproggrammet :)")
+
+dato = ""
+while True:
+    skriveInn = input("Hvilken dato? (idag / annnet)(i/a)")
+    if skriveInn == "i":
+        dato = datetime.date.today()
+        break
+    if skriveInn =="a":
+        fail =0
+        
+        dag = input("hvilken dag?") 
+        maande = input("hvilken mående?") 
+
+        try:
+            dag = int(dag)
+            dag = str(dag)
+            if len(dag)!=2:
+                dag = "0"+dag
+        except:
+            fail +=1 
+        
+        try:
+            maande = int(maande)
+            maande = str(maande)
+            if len(maande)!=2:
+                maande = "0"+maande
+        except:
+            fail +=1 
+        
+        if fail==0:
+            dato =f"{datetime.date.today().strftime('%Y')}-{maande}-{dag}"
+            break
+    print("ikke akkseptert input")
+
+print(dato)
+
+# space()
+
+# while True:
+
+    
+
+print("slutt")
+while input("") !="":
+    pass
