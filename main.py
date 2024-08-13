@@ -8,7 +8,7 @@ lookUpTablePath = databasePath + "/lookup.json"
 placePath = databasePath + "/steder.json"
 
 
-def space(spacing=2):
+def space(spacing=1):
     print("\n"*spacing)
     print("-"*20)
     print("\n"*spacing)
@@ -113,10 +113,32 @@ while True:
 
 print(dato)
 
-# space()
+space()
 
-# while True:
-
+while True:
+    print("Her er en liste med steder")
+    placedata = loadData(placePath)
+    while True:
+        for place in placedata:
+            print(place)
+        sted = input("skriv inn sted")
+        if (sted in placedata)==False:
+            print("Ser ut som fu har skrevt inn et nytt sted")
+            forsett = False
+            while forsett == False:
+                rett = input("er dette rett? (y/n)")
+                if rett=="y":
+                    forsett = True
+                    break
+                elif rett=="n":
+                    print("prøv på nytt")
+                    break
+                else:
+                    print("ikke aksepterrt input")
+                    
+                         
+        
+    break
     
 
 print("slutt")
