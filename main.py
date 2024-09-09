@@ -188,16 +188,19 @@ while isExiting == False:
                 while True:
                     pris = input("Skriv inn pris: ")
                     try:
+                        pris = pris.replace(",",".")
                         pris = float(pris)
                         break
                     except:
                         print("Ser ut som du ikke skrev inn et tall :(")
                 addItem(nyPath, ting, pris, dato, sted)
+                lookUpTableData = loadData(lookUpTablePath)
 
         if skip == False:
             while True:
                 pris = input("Skriv inn pris: ")
                 try:
+                    pris = pris.replace(",",".")
                     pris = float(pris)
                     break
                 except:
