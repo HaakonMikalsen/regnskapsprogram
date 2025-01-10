@@ -25,7 +25,9 @@ def getItemExpenses(path,betweenDateStart="",betweenDateEnd=""):
     totalSum = 0
 
     for dataPoint in data:
+        print(dataPoint)
         totalSum+= dataPoint["pris"]
+    print(totalSum)
     return totalSum
 
 
@@ -35,7 +37,10 @@ def getTotalExspenses():
     totalSum = 0
 
     for reletivePath in lookUpData.values():
-        totalSum +=getItemExpenses(databasePath+reletivePath)
+        print(reletivePath)
+        exspensValue =getItemExpenses(databasePath+reletivePath)
+        if exspensValue >0:
+            totalSum +=exspensValue
     
     print(totalSum)
 

@@ -120,7 +120,7 @@ if __name__ == "__main__":
         if skriveInn == "i":
             dato = datetime.date.today().strftime('%Y-%m-%d')
             break
-        if skriveInn == "a":
+        if (skriveInn == "a") or (skriveInn ==""):
             fail = 0
 
             dag = input("hvilken dag?")
@@ -147,9 +147,9 @@ if __name__ == "__main__":
                 break
         print("ikke akkseptert input")
     
-    *dato, = dato
-    dato[3] = "4"
-    dato = "".join(dato)
+    # *dato, = dato
+    # dato[3] = "4"
+    # dato = "".join(dato)
     print(dato)
 
     space()
@@ -173,12 +173,16 @@ if __name__ == "__main__":
 
     space()
     print("den er grei")
+    prissum = 0
     isExiting = False
     while isExiting == False:
         while True:
             pris = ""
-            ting = input("Skriv inn varenavn eller n for å avlsutte: ")
+            ting = input("Prissum "+str(prissum)+"kr. Skriv inn varenavn eller n for å avlsutte: ")
             if ting == "n":
+                isExiting = True
+                break
+            if ting == "":
                 isExiting = True
                 break
             skip = False
@@ -194,6 +198,7 @@ if __name__ == "__main__":
                         try:
                             pris = pris.replace(",",".")
                             pris = float(pris)
+                            prissum+=pris
                             break
                         except:
                             print("Ser ut som du ikke skrev inn et tall :(")
@@ -206,6 +211,7 @@ if __name__ == "__main__":
                     try:
                         pris = pris.replace(",",".")
                         pris = float(pris)
+                        prissum+=pris
                         break
                     except:
                         print("Ser ut som du ikke skrev inn et tall :(")
