@@ -110,81 +110,97 @@ lookUpTableData = loadData(lookUpTablePath)
 
 # print(finnPath())
 
+if __name__ == "__main__":
 
-print("Velkommen til regnskapsproggrammet :)")
+    print("Velkommen til regnskapsproggrammet :)")
 
-dato = ""
-while True:
-    skriveInn = input("Hvilken dato? (idag / annnet)(i/a)")
-    if skriveInn == "i":
-        dato = datetime.date.today().strftime('%Y-%m-%d')
-        break
-    if skriveInn == "a":
-        fail = 0
-
-        dag = input("hvilken dag?")
-        maande = input("hvilken mående?")
-
-        try:
-            dag = int(dag)
-            dag = str(dag)
-            if len(dag) != 2:
-                dag = "0" + dag
-        except:
-            fail += 1
-
-        try:
-            maande = int(maande)
-            maande = str(maande)
-            if len(maande) != 2:
-                maande = "0" + maande
-        except:
-            fail += 1
-
-        if fail == 0:
-            dato = f"{datetime.date.today().strftime('%Y')}-{maande}-{dag}"
-            break
-    print("ikke akkseptert input")
-
-print(dato)
-
-space()
-
-sted = ""
-while True:
-    print("Her er en liste med steder")
-    placedata = loadData(placePath)
+    dato = ""
     while True:
-        for place in placedata:
-            print(place)
-        sted = input("skriv inn sted: ")
-        if (sted in placedata) == False:
-            rett = input("Du skrev inn nytt sted, er dette rett?(y/n) ")
-            if rett == "y":
-                addPlace(sted)
+        skriveInn = input("Hvilken dato? (idag / annnet)(i/a)")
+        if skriveInn == "i":
+            dato = datetime.date.today().strftime('%Y-%m-%d')
+            break
+        if skriveInn == "a":
+            fail = 0
+
+            dag = input("hvilken dag?")
+            maande = input("hvilken mående?")
+
+            try:
+                dag = int(dag)
+                dag = str(dag)
+                if len(dag) != 2:
+                    dag = "0" + dag
+            except:
+                fail += 1
+
+            try:
+                maande = int(maande)
+                maande = str(maande)
+                if len(maande) != 2:
+                    maande = "0" + maande
+            except:
+                fail += 1
+
+            if fail == 0:
+                dato = f"{datetime.date.today().strftime('%Y')}-{maande}-{dag}"
                 break
-        if sted in placedata:
-            break
-    break
+        print("ikke akkseptert input")
+    
+    *dato, = dato
+    dato[3] = "4"
+    dato = "".join(dato)
+    print(dato)
 
-space()
-print("den er grei")
-isExiting = False
-while isExiting == False:
+    space()
+
+    sted = ""
     while True:
-        pris = ""
-        ting = input("Skriv inn varenavn eller n for å avlsutte: ")
-        if ting == "n":
-            isExiting = True
-            break
-        skip = False
-        if (ting in lookUpTableData) == False:
-            rett = input(
-                "ser ut som du skrev et produkt som ikke er lagt inn. Er dette rett?(y/n): "
-            )
-            skip = True
-            if rett == "y":
-                nyPath = finnPath()
+        print("Her er en liste med steder")
+        placedata = loadData(placePath)
+        while True:
+            for place in placedata:
+                print(place)
+            sted = input("skriv inn sted: ")
+            if (sted in placedata) == False:
+                rett = input("Du skrev inn nytt sted, er dette rett?(y/n) ")
+                if rett == "y":
+                    addPlace(sted)
+                    break
+            if sted in placedata:
+                break
+        break
+
+    space()
+    print("den er grei")
+    isExiting = False
+    while isExiting == False:
+        while True:
+            pris = ""
+            ting = input("Skriv inn varenavn eller n for å avlsutte: ")
+            if ting == "n":
+                isExiting = True
+                break
+            skip = False
+            if (ting in lookUpTableData) == False:
+                rett = input(
+                    "ser ut som du skrev et produkt som ikke er lagt inn. Er dette rett?(y/n): "
+                )
+                skip = True
+                if rett == "y":
+                    nyPath = finnPath()
+                    while True:
+                        pris = input("Skriv inn pris: ")
+                        try:
+                            pris = pris.replace(",",".")
+                            pris = float(pris)
+                            break
+                        except:
+                            print("Ser ut som du ikke skrev inn et tall :(")
+                    addItem(nyPath, ting, pris, dato, sted)
+                    lookUpTableData = loadData(lookUpTablePath)
+
+            if skip == False:
                 while True:
                     pris = input("Skriv inn pris: ")
                     try:
@@ -193,24 +209,12 @@ while isExiting == False:
                         break
                     except:
                         print("Ser ut som du ikke skrev inn et tall :(")
-                addItem(nyPath, ting, pris, dato, sted)
-                lookUpTableData = loadData(lookUpTablePath)
-
-        if skip == False:
-            while True:
-                pris = input("Skriv inn pris: ")
-                try:
-                    pris = pris.replace(",",".")
-                    pris = float(pris)
-                    break
-                except:
-                    print("Ser ut som du ikke skrev inn et tall :(")
-            addPrice(databasePath+lookUpTableData[ting], pris, dato, sted)
+                addPrice(databasePath+lookUpTableData[ting], pris, dato, sted)
 
 
-print(dato)
-print(sted)
+    print(dato)
+    print(sted)
 
-print("slutt")
-while input("") != "":
-    pass
+    print("slutt")
+    while input("") != "":
+        pass
