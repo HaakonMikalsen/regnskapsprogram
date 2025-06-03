@@ -25,9 +25,9 @@ def getItemExpenses(path,betweenDateStart="",betweenDateEnd=""):
     totalSum = 0
 
     for dataPoint in data:
-        print(dataPoint)
+        # print(dataPoint)
         totalSum+= dataPoint["pris"]
-    print(totalSum)
+    # print(totalSum)
     return totalSum
 
 
@@ -37,10 +37,11 @@ def getTotalExspenses():
     totalSum = 0
 
     for reletivePath in lookUpData.values():
-        print(reletivePath)
+        # print(reletivePath)
         exspensValue =getItemExpenses(databasePath+reletivePath)
         if exspensValue >0:
-            totalSum +=exspensValue
+            if reletivePath!= "/utgifter/annet/leie.json":
+                totalSum +=exspensValue
     
     print(totalSum)
 
@@ -48,4 +49,5 @@ def getTotalExspenses():
 
 if __name__ == "__main__":
     getTotalExspenses()
+    print( getItemExpenses(databasePath+loadData(lookUpTablePath)["leie"]))
     pass

@@ -90,6 +90,7 @@
         "klementiner": "/utgifter/mat/klementiner.json",
         "sm\u00f8r": "/utgifter/mat/sm\u00f8r.json",
         "mais": "/utgifter/mat/mais.json",
-        "kjeks": "/utgifter/mat/kjeks.json"
+        "kjeks": "/utgifter/mat/kjeks.json",
+        "banan": "/utgifter/mat/banan.json"
     }
 }
