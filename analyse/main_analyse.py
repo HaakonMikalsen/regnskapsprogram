@@ -35,19 +35,38 @@ def getTotalExspenses():
     lookUpData = loadData(lookUpTablePath)
 
     totalSum = 0
+    banList = ["/utgifter/annet/leie.json","/utgifter/skjult/skjult.json"]
+    for reletivePath in lookUpData.values():
+        # print(reletivePath)
+        exspensValue =getItemExpenses(databasePath+reletivePath)
+        if exspensValue >0:
+            if (reletivePath in banList) == False:
+                totalSum +=exspensValue
+    
+    print(totalSum)
+
+def getTotalExspensesAsList():
+    lookUpData = loadData(lookUpTablePath)
+
+    exspensList = []
+
+    banList = ["/utgifter/annet/leie.json","/utgifter/skjult/skjult.json"]
 
     for reletivePath in lookUpData.values():
         # print(reletivePath)
         exspensValue =getItemExpenses(databasePath+reletivePath)
         if exspensValue >0:
-            if reletivePath!= "/utgifter/annet/leie.json":
-                totalSum +=exspensValue
-    
-    print(totalSum)
-
-
+            if reletivePath not in banList:
+                name = reletivePath.split("/")[-1].replace(".json", "")
+                exspensList.append([exspensValue,name])
+    exspensList = sorted(exspensList, key=lambda x: x[0], reverse=True)
+    return exspensList
 
 if __name__ == "__main__":
     getTotalExspenses()
-    print( getItemExpenses(databasePath+loadData(lookUpTablePath)["leie"]))
+    # print( getItemExpenses(databasePath+loadData(lookUpTablePath)["brus"]))
+
+    expspenses = getTotalExspensesAsList();
+    for value in expspenses:
+        print(f"{value[1]}|{value[0]}")
     pass
