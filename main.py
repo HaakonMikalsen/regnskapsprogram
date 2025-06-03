@@ -110,13 +110,24 @@ lookUpTableData = loadData(lookUpTablePath)
 
 # print(finnPath())
 
+# overide mode:
+# overide = True
+# overidePlace = "REMA"
+# normal mode:
+overide = False
+overidePlace = "REMA"
+
+
+
 if __name__ == "__main__":
 
     print("Velkommen til regnskapsproggrammet :)")
 
     dato = ""
     while True:
-        skriveInn = input("Hvilken dato? (idag / annnet)(i/a)")
+        skriveInn = "a"
+        if  not overide:
+            skriveInn = input("Hvilken dato? (idag / annnet)(i/a)")
         if skriveInn == "i":
             dato = datetime.date.today().strftime('%Y-%m-%d')
             break
@@ -155,21 +166,24 @@ if __name__ == "__main__":
     space()
 
     sted = ""
-    while True:
-        print("Her er en liste med steder")
-        placedata = loadData(placePath)
+    if not overide:
         while True:
-            for place in placedata:
-                print(place)
-            sted = input("skriv inn sted: ")
-            if (sted in placedata) == False:
-                rett = input("Du skrev inn nytt sted, er dette rett?(y/n) ")
-                if rett == "y":
-                    addPlace(sted)
+            print("Her er en liste med steder")
+            placedata = loadData(placePath)
+            while True:
+                for place in placedata:
+                    print(place)
+                sted = input("skriv inn sted: ")
+                if (sted in placedata) == False:
+                    rett = input("Du skrev inn nytt sted, er dette rett?(y/n) ")
+                    if rett == "y":
+                        addPlace(sted)
+                        break
+                if sted in placedata:
                     break
-            if sted in placedata:
-                break
-        break
+            break
+    else:
+        sted = overidePlace
 
     space()
     print("den er grei")
