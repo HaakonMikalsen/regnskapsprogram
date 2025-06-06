@@ -158,6 +158,7 @@ while True:
         for place in placedata:
             print(place)
         sted = input("skriv inn sted: ")
+        sted = "REMA" ##Fjern!
         if (sted in placedata) == False:
             rett = input("Du skrev inn nytt sted, er dette rett?(y/n) ")
             if rett == "y":
