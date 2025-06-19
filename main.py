@@ -36,6 +36,7 @@ def finnPath():
             if os.path.isdir(os.path.join(newItemPath, d))
         ]
     print(newItemPath)
+
     return newItemPath
 
 
@@ -65,7 +66,12 @@ def addPrice(path, pris, dato, sted):
         json.dump(data, file)
 
 
-def addPlace(placeName):
+def addPlace(placeName,placePathOptional=""):
+    if placePathOptional =="":
+        placePath = placePath
+    else:
+        placePath = placePathOptional
+    
     data = loadWholeFile(placePath)
     if (placeName in data["data"]) == False:
         data["data"].append(placeName)
@@ -73,14 +79,22 @@ def addPlace(placeName):
             json.dump(data, file)
 
 
-def addLookUp(name, path):
+def addLookUp(name, path,lookUpOptionalPath=""):
+    if lookUpOptionalPath=="":
+        lookUpTablePath = lookUpTablePath
+    else:
+        lookUpTablePath = lookUpOptionalPath
     data = loadWholeFile(lookUpTablePath)
     data["data"][name] = path
     with open(lookUpTablePath, "w") as file:
         json.dump(data, file)
 
 
-def addItem(folderPath, name, pris, dato, sted):
+def addItem(folderPath, name, pris, dato, sted,dbPath=""):
+    if dbPath=="":
+        databasePath = databasePath
+    else:
+        databasePath = dbPath   
     BASEFORMATFILEPATH = databasePath + "/emptyDataSet.json"
     newFilePath = folderPath + "/" + name + ".json"
     data = loadWholeFile(BASEFORMATFILEPATH)
@@ -90,8 +104,12 @@ def addItem(folderPath, name, pris, dato, sted):
     with open(newFilePath, "w") as file:
         json.dump(data, file)
 
-    addLookUp(name, newFilePath.replace(databasePath, ""))
-    addPlace(sted)
+    # print(f"BASEFORMATFILEPATH: {BASEFORMATFILEPATH}")
+    # print(f"newFilePath: {newFilePath}")
+    # print(f"databasePath: {databasePath}")
+
+    addLookUp(name, newFilePath.replace(databasePath, ""),databasePath+"/lookup.json")
+    addPlace(sted,databasePath+"/steder.json")
 
 
 # Get the directory where the Python file is located
